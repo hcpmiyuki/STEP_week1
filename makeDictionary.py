@@ -11,17 +11,15 @@ english_dic = response.text.split('\n')
 q_english_dic = []
 sorted_english_dic = {}
 
-# quとQuをqに置き換える
+# quをqに置き換える
 for word in english_dic:
-    q_english_dic.append(word.replace('qu', 'q').replace('Qu', 'q'))
+    q_english_dic.append(word.replace('qu', 'q').replace('Qu', 'Q'))
     
-print(tes_dic)
-
 ## sort
 ### 単語の文字をソート
 for word in  q_english_dic:
     sorted_word =  "". join(sorted(word))
-    #insert sorted_word to key,original word to value
+    # insert sorted_word to key,original word to value
     sorted_english_dic[sorted_word] = word
 
 
