@@ -2,7 +2,7 @@ import itertools
 import pickle
     
 def makeWord2():
-    words = list(input("please input alphabet>"))
+    words = list(input("please input alphabets>"))
     w_count = len(words)
     dic = pickle.load(open("sorted_english_dic.pickle", "rb"))
 
