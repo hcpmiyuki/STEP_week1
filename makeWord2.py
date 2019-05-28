@@ -2,7 +2,7 @@ import itertools
 import pickle
     
 def makeWord2():
-    words = list(input("please input alphabets>"))
+    words = list(input("please input alphabet>"))
     w_count = len(words)
     dic = pickle.load(open("sorted_english_dic.pickle", "rb"))
 
@@ -17,16 +17,18 @@ def makeWord2():
             for k, v in dic.items():
                 if k == sorted_comb:
                     result = True
-                    result_list.append(v)
+                    print(v)
                     break
+                    
+            if result:
+                break
+                
+        if result:
+            break
+            
         index -= 1
 
     if result == False:
         print("None")
-    else:
-        # 重複している単語を消す
-        unique_result_list = list(dict.fromkeys(result_list))
-        for r in unique_result_list:
-            print(r)
         
 makeWord2()
