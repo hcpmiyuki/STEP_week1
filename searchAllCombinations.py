@@ -1,7 +1,7 @@
 import itertools
 import pickle
-    
-def makeWord():
+
+def searchAllCombinations():
     words = list(input("please input alphabet>"))
     w_count = len(words)
     dic = pickle.load(open("sorted_english_dic.pickle", "rb"))
@@ -13,7 +13,7 @@ def makeWord():
     one_point_list = ["a","b","d","e","g","i","n","o","r","s","t","u"]
     two_points_list = ["c","f","h","l","m","p","v","w","y"]
     three_points_list = ["j","k","q","x","z"]
-    
+
     for i in range(w_count):
         # 大きい方から組み合わせを作る
         comb_list = list(itertools.combinations(words, index))
@@ -24,18 +24,13 @@ def makeWord():
                 result_list.append(dic[sorted_comb])
                 r_count += 1
                 result = True
-            # 文字数が多い5文字だけresult_listに入れる
-            if r_count == 5:
-                break
-                
-        if r_count == 5:
-            break
-            
+
         index -= 1
 
     if result == False:
         print("None")
     else:
+        result_dic = {}
         for r_word in result_list:
             score = 0
             for word in list(r_word):
@@ -45,7 +40,9 @@ def makeWord():
                     score += 2
                 elif word in three_points_list:
                     score += 3
-            print(r_word, (score+1)**2)
-                    
-        
-makeWord()
+            result_dic[r_word] = (score+1)**2
+            
+        sorted_result_dic = sorted(result_dic.items(), key=lambda x:x[1], reverse=True)
+        print(sorted_result_dic[0])
+
+searchAllCombinations()
