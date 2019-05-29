@@ -14,13 +14,9 @@ def makeWord2():
         comb_list = list(itertools.combinations(words, index))
         for comb in comb_list:
             sorted_comb = "".join(sorted(comb))
-            for k, v in dic.items():
-                if k == sorted_comb:
-                    result = True
-                    print(v)
-                    break
-                    
-            if result:
+            if sorted_comb in dic:
+                print(dic[sorted_comb])
+                result = True
                 break
                 
         if result:
