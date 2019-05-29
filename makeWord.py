@@ -24,7 +24,7 @@ def makeWord2():
                 result_list.append(dic[sorted_comb])
                 r_count += 1
                 result = True
-            # 文字数が多い５文字だけresult_listに入れる
+            # 文字数が多い5文字だけresult_listに入れる
             if r_count == 5:
                 break
                 
