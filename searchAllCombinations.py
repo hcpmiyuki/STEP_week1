@@ -2,30 +2,31 @@ import itertools
 import pickle
 
 def searchAllCombinations():
-    words = list(input("please input alphabet>"))
-    w_count = len(words)
+    alphabets = list(input("please input alphabets>"))
+    a_list = []
+    for a in alphabets:
+        if a == "Qu":
+            a = Q
+        a_list.append(a.lower())
+
     dic = pickle.load(open("sorted_english_dic.pickle", "rb"))
 
-    index = w_count
     result = False
-    r_count = 0
     result_list = []
     one_point_list = ["a","b","d","e","g","i","n","o","r","s","t","u"]
     two_points_list = ["c","f","h","l","m","p","v","w","y"]
     three_points_list = ["j","k","q","x","z"]
 
-    for i in range(w_count):
-        # 大きい方から組み合わせを作る
-        comb_list = list(itertools.combinations(words, index))
+    for i in range(len(a_list)):
+        comb_list = list(itertools.combinations(a_list, i))
         unique_comb_list = list(dict.fromkeys(comb_list))
         for comb in unique_comb_list:
             sorted_comb = "".join(sorted(comb))
             if sorted_comb in dic:
                 result_list.append(dic[sorted_comb])
-                r_count += 1
                 result = True
 
-        index -= 1
+        i += 1
 
     if result == False:
         print("None")

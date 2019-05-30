@@ -22,5 +22,8 @@ for word in  q_english_dic:
     # insert sorted_word to key,original word to value
     sorted_english_dic[sorted_word] = word
 
+## valueだけquに戻す
+for k, v in sorted_english_dic.items():
+    sorted_english_dic[k] = v.replace('q', 'qu').replace('Q', 'Qu')
 
 pickle.dump(sorted_english_dic, open("sorted_english_dic.pickle", "wb"))
