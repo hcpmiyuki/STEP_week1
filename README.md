@@ -1,2 +1,2 @@
 # STEP_week1
-## run python3 AllSearchCombinations.py
++ run python3 AllSearchCombinations.py
